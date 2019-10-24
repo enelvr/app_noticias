@@ -1,0 +1,26 @@
+<ion-content>
+<ion-card *ngFor="let actualidad of actualidads; let key=index">
+    <ion-card-content *ngIf="key == 0">
+        <img src="{{actualidad.jetpack_featured_media_url}}" alt="{{ actualidad.title.rendered}}">
+        <ion-label>{{ actualidad.title.rendered}}</ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="key >= 1">
+        <ion-row>
+            <ion-col size="2">
+                <ion-thumbnail>
+                    <img src="{{actualidad.jetpack_featured_media_url}}" alt="{{ actualidad.title.rendered}}">
+                </ion-thumbnail>
+            </ion-col>
+            <ion-col size="10">
+                <ion-card-title>
+                    <ion-text color="dark"><h4>
+                        {{ actualidad.title.rendered}}
+                    </h4>
+                       
+                    </ion-text>
+                  </ion-card-title>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+</ion-card>
+</ion-content>

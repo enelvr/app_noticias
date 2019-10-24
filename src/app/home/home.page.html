@@ -1,14 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-card *ngFor="let new of news; let key=index">
+    <ion-card-content *ngIf="key == 0">
+        <img src="{{new.jetpack_featured_media_url}}" alt="{{ new.title.rendered}}">
+        <a (click)="detailNew(new.id, new.title.rendered, new.jetpack_featured_media_url, new.excerpt.rendered)">
+            <ion-label>
+                {{ new.title.rendered }}
+            </ion-label>
+        </a>
+        
+    </ion-card-content>
+    <ion-card-content *ngIf="key >= 1">
+        <ion-row>
+            <ion-col size="2">
+                <ion-thumbnail>
+                    <img src="{{new.jetpack_featured_media_url}}" alt="{{ new.title.rendered}}">
+                </ion-thumbnail>
+            </ion-col>
+            <ion-col size="10">
+                <a (click)="detailNew(new.id, new.title.rendered, new.jetpack_featured_media_url, new.excerpt.rendered)">
+                <ion-card-title>
+                    <ion-text color="dark"><h4>
+                        {{ new.title.rendered }}
+                    </h4>
+                       
+                    </ion-text>
+                  </ion-card-title>
+                  </a>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
